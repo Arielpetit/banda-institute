@@ -6,7 +6,7 @@ import { img } from "@/lib/content";
 
 export function Proprietor({ t: proprietor }: { t: Dictionary["proprietor"] }) {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-20 sm:py-28">
       <div className="container-page grid items-center gap-12 lg:grid-cols-12">
         <Reveal className="relative mx-auto w-full max-w-sm lg:col-span-4">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] rounded-tl-[8rem]">

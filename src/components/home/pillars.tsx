@@ -3,7 +3,7 @@ import { FlaskConical, GraduationCap, HeartHandshake, Languages } from "lucide-r
 import { SectionHeading } from "@/components/section-heading";
 import { Stagger, StaggerItem } from "@/components/reveal";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { img, stockUrl } from "@/lib/content";
+import { img } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 const icons = { languages: Languages, flask: FlaskConical, graduation: GraduationCap, heart: HeartHandshake };
@@ -14,7 +14,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
   const Icon = (k: string) => icons[k as keyof typeof icons] ?? Languages;
 
   return (
-    <section id="why" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="why" className="scroll-mt-24 py-20 sm:py-28">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
@@ -29,18 +29,18 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
         </div>
 
         <Stagger className="mt-14 grid auto-rows-[minmax(15rem,auto)] gap-4 md:grid-cols-6">
-          <StaggerItem className="group relative overflow-hidden rounded-[2rem] md:col-span-4 md:row-span-2">
-            <Image src={img("m1.jpg")} alt="" fill quality={80} sizes="(min-width:768px) 66vw, 100vw" className="object-cover transition-transform duration-[1.6s] ease-out-expo group-hover:scale-105" />
+          <StaggerItem className="group relative overflow-hidden rounded-3xl md:col-span-4 md:row-span-2">
+            <Image src={img("m1.jpg")} alt="" fill quality={80} sizes="(min-width:768px) 66vw, 100vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
             <div className="relative flex h-full min-h-[26rem] flex-col justify-end p-7 text-cream sm:p-10">
               <Tile icon={Icon(bilingual.icon)} light />
-              <h3 className="mt-6 max-w-md text-3xl sm:text-5xl">{bilingual.title}</h3>
+              <h3 className="mt-6 max-w-md text-3xl sm:text-4xl">{bilingual.title}</h3>
               <p className="mt-3 max-w-md text-ink-100/90">{bilingual.body}</p>
             </div>
           </StaggerItem>
 
-          <StaggerItem className="group relative overflow-hidden rounded-[2rem] md:col-span-2">
-            <Image src={stockUrl("microscope", 900)} alt="" fill quality={70} sizes="(min-width:768px) 33vw, 100vw" className="object-cover transition-transform duration-[1.6s] ease-out-expo group-hover:scale-105" />
+          <StaggerItem className="group relative overflow-hidden rounded-3xl md:col-span-2">
+            <Image src={img("b9.jpg")} alt="" fill quality={70} sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 to-ink-950/10" />
             <div className="relative flex h-full flex-col justify-end p-7 text-cream">
               <Tile icon={Icon(facilities.icon)} light />
@@ -49,7 +49,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
             </div>
           </StaggerItem>
 
-          <StaggerItem className="flex flex-col justify-between rounded-[2rem] border border-line bg-surface p-7 md:col-span-2">
+          <StaggerItem className="flex flex-col justify-between rounded-3xl border border-line bg-surface p-7 md:col-span-2">
             <Tile icon={Icon(teachers.icon)} />
             <div>
               <h3 className="mt-6 text-2xl text-fg">{teachers.title}</h3>
@@ -57,7 +57,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
             </div>
           </StaggerItem>
 
-          <StaggerItem className="flex flex-col justify-between rounded-[2rem] bg-gold-300 p-7 text-ink-950 md:col-span-3">
+          <StaggerItem className="flex flex-col justify-between rounded-3xl bg-gold-300 p-7 text-ink-950 md:col-span-3">
             <Tile icon={Icon(character.icon)} gold />
             <div>
               <h3 className="mt-6 text-3xl">{character.title}</h3>
@@ -65,10 +65,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
             </div>
           </StaggerItem>
 
-          <StaggerItem className="grain relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-ink-900 p-7 text-cream md:col-span-3">
-            <div aria-hidden className="absolute -right-10 -bottom-16 font-display text-[14rem] leading-none text-cream/[0.06] italic">
-              &amp;
-            </div>
+          <StaggerItem className="relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink-900 p-7 text-cream md:col-span-3">
             <p className="eyebrow text-gold-300">{t.exams.eyebrow}</p>
             <div className="relative mt-6 grid grid-cols-2 gap-6">
               {t.exams.items.map(([title, sub]) => (

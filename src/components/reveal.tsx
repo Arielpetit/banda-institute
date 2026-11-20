@@ -4,8 +4,8 @@ import { motion, type Variants } from "motion/react";
 import { cn } from "@/lib/cn";
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function Reveal({
@@ -23,10 +23,10 @@ export function Reveal({
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </Tag>
@@ -75,7 +75,7 @@ export function StaggerItem({
   );
 }
 
-/** Splits a headline into words that rise from a mask. */
+/** Page headline with a gentle fade-up on load. */
 export function SplitHeading({
   text,
   className,
@@ -88,29 +88,14 @@ export function SplitHeading({
   as?: "h1" | "h2";
 }) {
   const Tag = motion[as];
-  const words = text.split(" ");
   return (
     <Tag
       className={className}
-      initial="hidden"
-      animate="show"
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: delay } } }}
-      aria-label={text}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
-      {words.map((w, i) => (
-        <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-          <motion.span
-            className="inline-block"
-            variants={{
-              hidden: { y: "110%" },
-              show: { y: "0%", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
-            }}
-          >
-            {w}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
-        </span>
-      ))}
+      {text}
     </Tag>
   );
 }

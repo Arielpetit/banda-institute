@@ -25,7 +25,7 @@ export default async function EventsPage({ params }: PageProps<"/[lang]/events">
         image={img("f1.jpg")}
         imageAlt={e.hero.alt}
       />
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={e.upcoming.eyebrow} title={e.upcoming.title} />
           <EventsList
@@ -35,7 +35,7 @@ export default async function EventsPage({ params }: PageProps<"/[lang]/events">
           />
         </div>
       </section>
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={e.calendarHeading.eyebrow} title={e.calendarHeading.title} />
           <Stagger className="mt-12 grid gap-4 md:grid-cols-3">

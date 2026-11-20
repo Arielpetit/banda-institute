@@ -42,7 +42,7 @@ export default async function PrimaryPage({ params }: PageProps<"/[lang]/primary
         </div>
       </PageHero>
 
-      <section id="stages" className="scroll-mt-24 py-24 sm:py-32">
+      <section id="stages" className="scroll-mt-24 py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={p.stagesHeading.eyebrow} title={p.stagesHeading.title} intro={p.stagesHeading.intro} />
           <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -76,7 +76,7 @@ export default async function PrimaryPage({ params }: PageProps<"/[lang]/primary
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page grid items-center gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow={p.bilingual.eyebrow} title={p.bilingual.title} intro={p.bilingual.intro} />

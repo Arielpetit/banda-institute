@@ -7,7 +7,7 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 
 export function Programmes({ t }: { t: Dictionary["home"]["programmes"] }) {
   return (
-    <section className="bg-subtle py-24 sm:py-32">
+    <section className="bg-subtle py-20 sm:py-28">
       <div className="container-page">
         <SectionHeading
           eyebrow={t.eyebrow}

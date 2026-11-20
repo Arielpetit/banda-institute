@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/button-link";
 import { Faq } from "@/components/faq";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { loadLocale } from "@/i18n/load";
-import { img, stockUrl } from "@/lib/content";
+import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/admissions">): Promise<Metadata> {
   const { t } = await loadLocale(params);
@@ -37,7 +37,7 @@ export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admi
       </PageHero>
 
       {/* Process */}
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={a.process.eyebrow} title={a.process.title} intro={a.process.intro} />
           <div className="relative mt-16">
@@ -61,7 +61,7 @@ export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admi
       </section>
 
       {/* Requirements */}
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={a.requirements.eyebrow} title={a.requirements.title} align="center" />
           <Stagger className="mt-14 grid gap-5 lg:grid-cols-3">
@@ -89,7 +89,7 @@ export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admi
       </section>
 
       {/* Dates + documents */}
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow flex items-center gap-2 text-accent">
@@ -109,7 +109,7 @@ export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admi
           </Reveal>
           <Reveal delay={0.1} className="relative overflow-hidden rounded-[2rem] bg-surface ring-1 ring-line">
             <div className="relative aspect-[16/9]">
-              <Image src={stockUrl("writing", 1200)} alt="" fill quality={70} sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src={img("b21.jpg")} alt="" fill quality={70} sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="p-8">
               <p className="eyebrow flex items-center gap-2 text-accent">
@@ -132,7 +132,7 @@ export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admi
         </div>
       </section>
 
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow={t.contact.faqHeading.eyebrow} title={t.contact.faqHeading.title} />

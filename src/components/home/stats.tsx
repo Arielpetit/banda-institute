@@ -1,5 +1,5 @@
 import { Counter } from "@/components/counter";
-import { ParallaxImage } from "@/components/parallax-image";
+import Image from "next/image";
 import { Stagger, StaggerItem } from "@/components/reveal";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { img } from "@/lib/content";
@@ -7,13 +7,7 @@ import { img } from "@/lib/content";
 export function Stats({ t }: { t: Dictionary["home"]["stats"] }) {
   return (
     <section className="relative isolate overflow-hidden bg-ink-950 py-24 text-cream sm:py-32">
-      <ParallaxImage
-        src={img("h1.JPG")}
-        alt=""
-        className="absolute! inset-0 -z-10 opacity-30"
-        sizes="100vw"
-        strength={10}
-      />
+      <Image src={img("h1.JPG")} alt="" fill sizes="100vw" quality={70} className="-z-10 object-cover opacity-30" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink-950/90 via-ink-950/60 to-ink-950" />
       <div className="container-page">
         <p className="eyebrow text-gold-300">{t.eyebrow}</p>

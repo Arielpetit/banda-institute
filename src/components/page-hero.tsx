@@ -26,11 +26,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="grain relative overflow-hidden bg-ink-900 pt-28 pb-16 text-cream sm:pt-36 lg:pb-24">
-      <div
-        aria-hidden
-        className="absolute -top-40 -right-40 size-[36rem] rounded-full bg-ink-600/40 blur-3xl"
-      />
+    <section className="relative overflow-hidden bg-ink-900 pt-28 pb-14 text-cream sm:pt-32 lg:pb-20">
       <div className="container-page relative grid items-center gap-12 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <motion.nav
@@ -47,13 +43,13 @@ export function PageHero({
           </motion.nav>
           <SplitHeading
             text={title}
-            className="mt-6 text-5xl leading-[1.02] font-medium sm:text-6xl lg:text-7xl"
+            className="mt-5 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl"
             delay={0.1}
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.9 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-ink-100/85"
           >
             {intro}
@@ -62,7 +58,7 @@ export function PageHero({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65, duration: 0.9 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
               className="mt-8"
             >
               {children}
@@ -70,20 +66,13 @@ export function PageHero({
           )}
         </div>
         <motion.div
-          className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:col-span-6"
-          initial={{ clipPath: "inset(100% 0 0 0 round 2rem)" }}
-          animate={{ clipPath: "inset(0% 0 0 0 round 2rem)" }}
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+          className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-ink-800 lg:col-span-6"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
-          <motion.div
-            className="absolute inset-0"
-            initial={{ scale: 1.25 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          >
-            <Image src={image} alt={imageAlt} fill priority quality={80} sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
-          </motion.div>
-          <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-cream/10" />
+          <Image src={image} alt={imageAlt} fill priority quality={80} sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+          <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-cream/10" />
         </motion.div>
       </div>
     </section>

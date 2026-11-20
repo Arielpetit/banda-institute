@@ -8,7 +8,7 @@ import { site, tel } from "@/lib/content";
 export function SiteFooter({ t }: { t: Dictionary }) {
   const f = t.footer;
   return (
-    <footer className="grain relative overflow-hidden bg-ink-950 text-ink-100">
+    <footer className="relative overflow-hidden bg-ink-950 text-ink-100">
       <div className="container-page relative">
         <div className="flex flex-col items-start justify-between gap-8 border-b border-cream/10 py-16 md:flex-row md:items-end">
           <h2 className="max-w-xl text-4xl leading-tight text-cream sm:text-5xl">
@@ -80,13 +80,6 @@ export function SiteFooter({ t }: { t: Dictionary }) {
             </ul>
           </div>
         </div>
-
-        <p
-          aria-hidden
-          className="pointer-events-none -mb-[0.22em] select-none text-center font-display text-[22vw] leading-none font-semibold text-cream/[0.04] lg:text-[16rem]"
-        >
-          B<span className="italic">&amp;</span>A
-        </p>
 
         <div className="flex flex-col gap-2 border-t border-cream/10 py-6 text-xs text-ink-300 sm:flex-row sm:justify-between">
           <p>

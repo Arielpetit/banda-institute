@@ -5,7 +5,7 @@ type Props = { t: { eyebrow: string; title: string; body: string; cta: string; s
 
 export function AdmissionsBand({ t }: Props) {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-20 sm:py-28">
       <div className="container-page">
         <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-gold-300 p-8 text-ink-950 sm:p-14 lg:p-16">
           <div aria-hidden className="absolute -top-24 -right-24 size-96 rounded-full border-[40px] border-ink-950/[0.06]" />

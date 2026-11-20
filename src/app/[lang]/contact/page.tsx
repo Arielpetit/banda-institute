@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         imageAlt={c.hero.alt}
       />
 
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading eyebrow={c.heading.eyebrow} title={c.heading.title} />
@@ -82,7 +82,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         </div>
       </section>
 
-      <section className="pb-24 sm:pb-32">
+      <section className="pb-20 sm:pb-28">
         <div className="container-page">
           <Reveal className="overflow-hidden rounded-[2rem] border border-line">
             <iframe
@@ -96,7 +96,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         </div>
       </section>
 
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow={c.faqHeading.eyebrow} title={c.faqHeading.title} />

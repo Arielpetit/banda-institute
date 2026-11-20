@@ -8,7 +8,7 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 export function EventsPreview({ t, lang }: { t: Dictionary; lang: Locale }) {
   const h = t.home.events;
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-20 sm:py-28">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading eyebrow={h.eyebrow} title={h.title} />

@@ -69,6 +69,7 @@ const fr: Dictionary = {
         ["3 filières", "Générale, technique, commerciale"],
       ],
       learners: "élèves sur le campus",
+      photoAlt: "Élèves alignés dans la cour de B&A Institute",
       apply: "Postuler pour 2026–27",
       scroll: "Défiler",
       imgA: "Élèves du primaire en toge de remise de diplômes",

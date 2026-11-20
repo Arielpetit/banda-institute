@@ -8,6 +8,12 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
+## Design
+
+- Fonts: **Source Serif 4** for headings (classic, calm, sharp at large sizes) and **Inter** for body text (very legible on phones, full French accent support). Both load through `next/font`, so no layout shift.
+- Motion is kept subtle: short fade-ups on scroll, no intro screen and no scroll-jacking. All animation respects "reduce motion".
+- Fully responsive from 360 px phones to wide desktops (checked at 390, 768, 1280 and 1440 px).
+
 ## Features
 
 - English / French (`/en`, `/fr`), automatic language detection, switch in the header.
@@ -24,7 +30,7 @@ npm run build && npm start
 
 ## Before launch
 
-- School photos are in `public/images/school` (copied from bandainstitute.com and resized). A few generic photos come from Unsplash (free licence); they are listed in `stock` in `src/lib/content.ts`.
+- School photos are in `public/images/school` (copied from bandainstitute.com and resized). Every photo on the site is a real school photo; there are no stock images.
 - Online applications are saved by `src/app/[lang]/admissions/apply/actions.ts` into `./data/applications/<reference>/` (JSON + uploaded documents). This needs a Node host with a writable disk; on Vercel or other serverless hosting, replace the file writes in `submitApplication` with a database or storage bucket. Add email or WhatsApp notifications to the admissions office before launch.
 - Have a native French speaker proofread `fr.ts`.
 - Confirm: event dates (2026–27 sample calendar), phone numbers, WhatsApp number, email addresses (`ba-institute.edu`), founding year.

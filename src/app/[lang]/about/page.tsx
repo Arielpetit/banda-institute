@@ -29,7 +29,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         imageAlt={a.hero.alt}
       />
 
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page">
           <Stagger className="grid gap-5 md:grid-cols-2">
             {[
@@ -46,7 +46,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={a.story.eyebrow} title={a.story.title} intro={a.story.intro} />
           <ol className="mt-16 space-y-16 lg:space-y-24">

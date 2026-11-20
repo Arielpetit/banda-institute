@@ -31,14 +31,14 @@ export default async function SecondaryPage({ params }: PageProps<"/[lang]/secon
         <ButtonLink href="/contact">{s.hero.cta}</ButtonLink>
       </PageHero>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={s.pathwaysHeading.eyebrow} title={s.pathwaysHeading.title} intro={s.pathwaysHeading.intro} />
           <PathwayTabs t={s} />
         </div>
       </section>
 
-      <section className="bg-subtle py-24 sm:py-32">
+      <section className="bg-subtle py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading
             eyebrow={s.systemsHeading.eyebrow}
@@ -70,7 +70,7 @@ export default async function SecondaryPage({ params }: PageProps<"/[lang]/secon
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow={s.facilitiesHeading.eyebrow} title={s.facilitiesHeading.title} />
           <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -87,9 +87,9 @@ export default async function SecondaryPage({ params }: PageProps<"/[lang]/secon
         </div>
       </section>
 
-      <section className="pb-24 sm:pb-32">
+      <section className="pb-20 sm:pb-28">
         <div className="container-page">
-          <Reveal className="grain relative overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-cream sm:p-14">
+          <Reveal className="relative overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-cream sm:p-14">
             <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
               <Image src={img("b20.jpg")} alt="" fill quality={70} sizes="50vw" className="object-cover opacity-60" />
               <div className="absolute inset-0 bg-gradient-to-r from-ink-900 to-transparent" />

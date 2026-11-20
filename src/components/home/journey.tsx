@@ -11,7 +11,7 @@ export function Journey({ t }: { t: Dictionary["home"]["journey"] }) {
   const scale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-20 sm:py-28">
       <div className="container-page grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">

@@ -68,6 +68,7 @@ const en = {
         ["3 pathways", "General, Technical, Commercial"],
       ],
       learners: "learners on campus",
+      photoAlt: "Pupils lined up in the B&A Institute courtyard",
       apply: "Apply for 2026–27",
       scroll: "Scroll",
       imgA: "Primary pupils in graduation gowns",

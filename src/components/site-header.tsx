@@ -56,7 +56,8 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
     setOpen(false);
   };
   const switchHref = switchLocalePath(pathname, other);
-  const items = [{ href: "/", label: ui.home }, ...nav, { href: "/contact", label: contactLabel }];
+  const navItems = [...nav, { href: "/contact", label: contactLabel }];
+  const items = [{ href: "/", label: ui.home }, ...navItems];
 
   return (
     <>
@@ -69,8 +70,8 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
           className={cn(
             "mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 rounded-full border px-2 pl-3.5 transition-all duration-500 sm:pl-5",
             scrolled || open
-              ? "border-ink-900/10 bg-canvas/85 shadow-[0_10px_40px_-15px_rgba(43,18,49,0.35)] backdrop-blur-xl"
-              : "border-transparent bg-canvas/60 backdrop-blur-md",
+              ? "border-line bg-canvas shadow-[0_8px_30px_-12px_rgb(var(--shadow)/0.25)]"
+              : "border-line/60 bg-canvas",
           )}
         >
           <Link href={href("/")} aria-label={ui.homeAria} onClick={() => setOpen(false)}>
@@ -78,14 +79,14 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
           </Link>
 
           <nav aria-label={ui.mainNav} className="hidden xl:block">
-            <ul className="flex items-center gap-1">
-              {nav.map((item) => (
+            <ul className="flex items-center gap-0.5">
+              {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={href(item.href)}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={cn(
-                      "relative block rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+                      "relative block rounded-full px-3.5 py-2 text-sm font-medium whitespace-nowrap transition-colors",
                       isActive(item.href) ? "text-on-primary" : "text-fg hover:text-accent",
                     )}
                   >
@@ -123,7 +124,7 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
             <ThemeToggle labels={{ light: ui.themeLight, dark: ui.themeDark }} />
             <a
               href={tel(site.phones.administration)}
-              className="hidden size-11 place-items-center rounded-full text-fg-2 transition-colors hover:bg-tint md:grid"
+              className="hidden size-11 place-items-center rounded-full text-fg-2 transition-colors hover:bg-tint md:grid xl:hidden 2xl:grid"
               aria-label={`${ui.call} ${site.phones.administration}`}
             >
               <Phone className="size-4" />
@@ -161,34 +162,33 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
         {open && (
           <motion.div
             id="mobile-menu"
-            className="grain fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink-900 px-6 pt-28 pb-10 xl:hidden"
-            initial={{ clipPath: "circle(0px at 88% 44px)" }}
-            animate={{ clipPath: "circle(1600px at 88% 44px)" }}
-            exit={{ clipPath: "circle(0px at 88% 44px)" }}
-            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink-900 px-6 pt-28 pb-10 xl:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
           >
             <motion.ul
               className="flex flex-col"
               initial="hidden"
               animate="show"
-              variants={{ show: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } } }}
+              variants={{ show: { transition: { staggerChildren: 0.03, delayChildren: 0.05 } } }}
             >
-              {items.map((item, i) => (
+              {items.map((item) => (
                 <motion.li
                   key={item.href}
                   className="border-b border-cream/10"
-                  variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                  variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
                 >
                   <Link
                     href={href(item.href)}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "flex items-baseline gap-4 py-4 font-display text-4xl",
+                      "flex items-baseline gap-4 py-3.5 font-display text-3xl sm:text-4xl",
                       isActive(item.href) ? "text-gold-300" : "text-cream",
                     )}
                   >
-                    <span className="font-sans text-xs text-ink-300 tabular-nums">0{i + 1}</span>
-                    {item.label}
+                                        {item.label}
                   </Link>
                 </motion.li>
               ))}
@@ -196,7 +196,7 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
             <motion.div
               className="mt-auto space-y-2 pt-10 text-sm text-ink-200"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.5 } }}
+              animate={{ opacity: 1, transition: { delay: 0.15 } }}
             >
               <div className="mb-6 inline-flex rounded-full bg-cream/10 p-1">
                 {(["en", "fr"] as const).map((l) => (

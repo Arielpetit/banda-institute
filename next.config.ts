@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
   },
   partialPrefetching: true,
   images: {
-    // School photos live in /public/images/school. Unsplash serves the few stock photos.
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" }],
+    // All photos are real school photos in /public/images/school.
     qualities: [70, 80],
   },
   turbopack: {
