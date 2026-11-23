@@ -8,7 +8,7 @@ export function Stats({ t }: { t: Dictionary["home"]["stats"] }) {
   return (
     <section className="relative isolate overflow-hidden bg-ink-950 py-24 text-cream sm:py-32">
       <ParallaxImage
-        src={img("h1.JPG")}
+        src={img("m1.jpg")}
         alt=""
         className="absolute! inset-0 -z-10 opacity-30"
         sizes="100vw"

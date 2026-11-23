@@ -1,7 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { Pillars } from "@/components/home/pillars";
 import { Programmes } from "@/components/home/programmes";
-import { DayInLife } from "@/components/home/day-in-life";
 import { Stats } from "@/components/home/stats";
 import { Journey } from "@/components/home/journey";
 import { Proprietor } from "@/components/home/proprietor";
@@ -17,7 +16,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Hero t={h.hero} />
       <Pillars t={h.pillars} />
       <Programmes t={h.programmes} />
-      <DayInLife t={h.day} />
       <Journey t={h.journey} />
       <Stats t={h.stats} />
       <Proprietor t={t.proprietor} />

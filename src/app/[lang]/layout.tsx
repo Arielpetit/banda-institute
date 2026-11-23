@@ -66,7 +66,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           {t.ui.skip}
         </a>
         <MotionProvider>
-          <SiteHeader lang={lang} ui={t.ui} nav={t.nav} contactLabel={t.contactLabel} location={t.location} />
+          <SiteHeader lang={lang} ui={t.ui} nav={t.nav} location={t.location} />
           <main id="main" className="flex-1">
             {children}
           </main>

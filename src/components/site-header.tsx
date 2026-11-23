@@ -2,13 +2,25 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Languages, Menu, Phone, X } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
+import { Languages, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 import { ButtonLink } from "@/components/button-link";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { LOCALE_COOKIE, localizeHref, switchLocalePath, type Locale } from "@/i18n/config";
+import { NavDropdown } from "@/components/nav-dropdown";
+import { flattenNav } from "@/i18n/nav";
+import {
+  LOCALE_COOKIE,
+  localizeHref,
+  switchLocalePath,
+  type Locale,
+} from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { site, tel } from "@/lib/content";
 import { cn } from "@/lib/cn";
@@ -17,11 +29,10 @@ type Props = {
   lang: Locale;
   ui: Dictionary["ui"];
   nav: Dictionary["nav"];
-  contactLabel: string;
   location: string;
 };
 
-export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
+export function SiteHeader({ lang, ui, nav, location }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -56,7 +67,7 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
     setOpen(false);
   };
   const switchHref = switchLocalePath(pathname, other);
-  const items = [{ href: "/", label: ui.home }, ...nav, { href: "/contact", label: contactLabel }];
+  const items = [{ href: "/", label: ui.home }, ...flattenNav(nav)];
 
   return (
     <>
@@ -73,33 +84,53 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
               : "border-transparent bg-canvas/60 backdrop-blur-md",
           )}
         >
-          <Link href={href("/")} aria-label={ui.homeAria} onClick={() => setOpen(false)}>
+          <Link
+            href={href("/")}
+            aria-label={ui.homeAria}
+            onClick={() => setOpen(false)}
+          >
             <Logo tag={ui.logoTag} />
           </Link>
 
           <nav aria-label={ui.mainNav} className="hidden xl:block">
             <ul className="flex items-center gap-1">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={href(item.href)}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                    className={cn(
-                      "relative block rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
-                      isActive(item.href) ? "text-on-primary" : "text-fg hover:text-accent",
-                    )}
-                  >
-                    {isActive(item.href) && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full bg-primary"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                    <span className="relative">{item.label}</span>
-                  </Link>
-                </li>
-              ))}
+              {nav.map((item) =>
+                item.children ? (
+                  <NavDropdown
+                    key={item.label}
+                    label={item.label}
+                    items={item.children}
+                    active={item.children.some((c) => isActive(c.href))}
+                    href={href}
+                  />
+                ) : (
+                  <li key={item.href}>
+                    <Link
+                      href={href(item.href)}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      className={cn(
+                        "relative block rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+                        isActive(item.href)
+                          ? "text-on-primary"
+                          : "text-fg hover:text-accent",
+                      )}
+                    >
+                      {isActive(item.href) && (
+                        <motion.span
+                          layoutId="nav-pill"
+                          className="absolute inset-0 rounded-full bg-primary"
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 32,
+                          }}
+                        />
+                      )}
+                      <span className="relative">{item.label}</span>
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
 
@@ -117,17 +148,14 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
               <span aria-hidden className="flex items-center gap-1">
                 <span>{lang.toUpperCase()}</span>
                 <span className="opacity-40">/</span>
-                <span className="opacity-50 transition-opacity group-hover:opacity-100">{ui.switchShort}</span>
+                <span className="opacity-50 transition-opacity group-hover:opacity-100">
+                  {ui.switchShort}
+                </span>
               </span>
             </Link>
-            <ThemeToggle labels={{ light: ui.themeLight, dark: ui.themeDark }} />
-            <a
-              href={tel(site.phones.administration)}
-              className="hidden size-11 place-items-center rounded-full text-fg-2 transition-colors hover:bg-tint md:grid"
-              aria-label={`${ui.call} ${site.phones.administration}`}
-            >
-              <Phone className="size-4" />
-            </a>
+            <ThemeToggle
+              labels={{ light: ui.themeLight, dark: ui.themeDark }}
+            />
             <span className="hidden sm:block">
               <ButtonLink href="/admissions" icon={false}>
                 {ui.visit}
@@ -149,7 +177,11 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {open ? <X className="size-5" /> : <Menu className="size-5" />}
+                  {open ? (
+                    <X className="size-5" />
+                  ) : (
+                    <Menu className="size-5" />
+                  )}
                 </motion.span>
               </AnimatePresence>
             </button>
@@ -171,23 +203,32 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
               className="flex flex-col"
               initial="hidden"
               animate="show"
-              variants={{ show: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } } }}
+              variants={{
+                show: {
+                  transition: { staggerChildren: 0.05, delayChildren: 0.2 },
+                },
+              }}
             >
               {items.map((item, i) => (
                 <motion.li
                   key={item.href}
                   className="border-b border-cream/10"
-                  variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    show: { opacity: 1, y: 0 },
+                  }}
                 >
                   <Link
                     href={href(item.href)}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "flex items-baseline gap-4 py-4 font-display text-4xl",
+                      "flex items-baseline gap-4 py-3.5 font-display text-3xl sm:text-4xl",
                       isActive(item.href) ? "text-gold-300" : "text-cream",
                     )}
                   >
-                    <span className="font-sans text-xs text-ink-300 tabular-nums">0{i + 1}</span>
+                    <span className="font-sans text-xs text-ink-300 tabular-nums">
+                      0{i + 1}
+                    </span>
                     {item.label}
                   </Link>
                 </motion.li>
@@ -216,10 +257,16 @@ export function SiteHeader({ lang, ui, nav, contactLabel, location }: Props) {
                 ))}
               </div>
               <p>{location}</p>
-              <a className="block text-cream" href={tel(site.phones.administration)}>
+              <a
+                className="block text-cream"
+                href={tel(site.phones.administration)}
+              >
                 {site.phones.administration}
               </a>
-              <a className="block text-cream" href={`mailto:${site.emails.general}`}>
+              <a
+                className="block text-cream"
+                href={`mailto:${site.emails.general}`}
+              >
                 {site.emails.general}
               </a>
             </motion.div>

@@ -29,7 +29,7 @@ export function Programmes({ t }: { t: Dictionary["home"]["programmes"] }) {
                     fill
                     quality={80}
                     sizes="(min-width:1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
+                    className="object-cover object-[50%_28%] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/0" />
                   <p className="absolute bottom-5 left-6 rounded-full bg-canvas/90 px-3 py-1 text-xs font-semibold text-fg-2 backdrop-blur">

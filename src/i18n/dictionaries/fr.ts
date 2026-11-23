@@ -1,5 +1,6 @@
 import { img, type EmailKey, type GalleryItem, type SchoolEvent } from "@/lib/content";
 import type { Dictionary } from "./en";
+import type { NavItem } from "@/i18n/nav";
 
 const fr: Dictionary = {
   meta: {
@@ -30,13 +31,18 @@ const fr: Dictionary = {
   },
   nav: [
     { href: "/about", label: "À propos" },
-    { href: "/primary", label: "Primaire" },
-    { href: "/secondary", label: "Secondaire" },
+    {
+      label: "Programmes",
+      children: [
+        { href: "/primary", label: "Section primaire", desc: "Crèche → CM2 · Day Care → Class 6" },
+        { href: "/secondary", label: "Section secondaire", desc: "6ème → Terminale · Form 1 → Upper Sixth" },
+      ],
+    },
     { href: "/admissions", label: "Admissions" },
     { href: "/events", label: "Événements" },
     { href: "/gallery", label: "Galerie" },
-  ],
-  contactLabel: "Contact",
+    { href: "/contact", label: "Contact" },
+  ] as NavItem[],
   location: "Nkolbisson, Yaoundé — derrière l'Institut Catholique",
   hours: [
     { day: "Lundi – vendredi", time: "7h30 – 17h00" },
@@ -58,34 +64,18 @@ const fr: Dictionary = {
   home: {
     hero: {
       badge: "Inscriptions ouvertes · 2026–27",
-      title: "Deux langues. Une même exigence d'excellence.",
+      title: "Deux langues.\nUne même exigence d'excellence.",
       intro:
         "Une école bilingue complète à Yaoundé. Les enfants entrent à la crèche et repartent prêts pour l'université, à l'aise en français comme en anglais.",
-      primary: "Section primaire",
-      secondary: "Section secondaire",
       facts: [
-        ["De 1 à 18 ans", "Un campus, du début à la fin"],
+        ["1–18 ans", "Un seul campus"],
         ["FR + EN", "Deux sections complètes"],
         ["3 filières", "Générale, technique, commerciale"],
       ],
       learners: "élèves sur le campus",
       apply: "Postuler pour 2026–27",
-      scroll: "Défiler",
-      imgA: "Élèves du primaire en toge de remise de diplômes",
-      imgB: "Élèves du secondaire en travaux pratiques de chimie",
-    },
-    day: {
-      eyebrow: "Une journée chez B&A",
-      title: "Une journée chez B&A, heure par heure.",
-      intro: "Du rassemblement du matin au dernier match de l'après-midi.",
-      moments: [
-        { time: "07h30", title: "Rassemblement", body: "Hymne, annonces et un mot d'encouragement pour commencer la journée ensemble.", image: "m3.jpg" },
-        { time: "08h00", title: "Début des cours", body: "Petites classes en anglais ou en français, avec une pratique quotidienne de l'autre langue.", image: "b8.jpg" },
-        { time: "10h30", title: "Sciences en pratique", body: "Les élèves du secondaire rejoignent les laboratoires pour les travaux pratiques.", image: "b13.jpg" },
-        { time: "12h30", title: "Déjeuner & récréation", body: "Le temps de manger, de se reposer et de courir dans la cour avec les amis.", image: "m13.jpg" },
-        { time: "14h00", title: "Clubs & culture", body: "Musique, danse, théâtre et arts — chaque enfant trouve sa scène.", image: "m10.jpg" },
-        { time: "16h00", title: "Sport", body: "Football, athlétisme et jeux inter-maisons avant de rentrer.", image: "m11.jpg" },
-      ],
+      explore: "Découvrir l'école",
+      imgA: "L'équipe enseignante de B&A devant l'école, sous les mots Discipline, Hardwork, Success",
     },
     admissions: {
       eyebrow: "Admissions 2026–27",
@@ -142,8 +132,8 @@ const fr: Dictionary = {
           range: "6ème → Terminale · Form 1 → Upper Sixth",
           body: "Trois filières — Technique, Commerciale et Générale — pour préparer le Baccalauréat, le GCE et la suite.",
           points: ["Enseignement technique", "Études commerciales", "Enseignement général", "Laboratoires modernes"],
-          image: img("b6.jpg"),
-          alt: "Élèves du secondaire en train d'étudier ensemble",
+          image: img("b4.jpg"),
+          alt: "Élève du secondaire en uniforme tenant le drapeau camerounais lors d'un défilé",
         },
       ],
     },
@@ -480,7 +470,7 @@ const fr: Dictionary = {
     swipe: "Balayez pour parcourir",
     tags: ["Campus", "Classes", "Événements", "Sport", "Vie scolaire"],
     items: [
-      { src: img("h1.JPG"), title: "Équipe & élèves", tag: "Campus" },
+      { src: img("h1.JPG"), title: "Notre équipe pédagogique", tag: "Campus" },
       { src: img("m8.JPG"), title: "Petits diplômés", tag: "Événements" },
       { src: img("b4.jpg"), title: "Fierté nationale", tag: "Vie scolaire" },
       { src: img("b9.jpg"), title: "TP de chimie", tag: "Classes" },

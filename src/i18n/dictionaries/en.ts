@@ -1,3 +1,4 @@
+import type { NavItem } from "@/i18n/nav";
 import { img, type EmailKey, type GalleryItem, type SchoolEvent } from "@/lib/content";
 
 const en = {
@@ -29,13 +30,18 @@ const en = {
   },
   nav: [
     { href: "/about", label: "About" },
-    { href: "/primary", label: "Primary" },
-    { href: "/secondary", label: "Secondary" },
+    {
+      label: "Programmes",
+      children: [
+        { href: "/primary", label: "Primary section", desc: "Day Care → Class 6 · Crèche → CM2" },
+        { href: "/secondary", label: "Secondary section", desc: "Form 1 → Upper Sixth · 6ème → Terminale" },
+      ],
+    },
     { href: "/admissions", label: "Admissions" },
     { href: "/events", label: "Events" },
     { href: "/gallery", label: "Gallery" },
-  ],
-  contactLabel: "Contact",
+    { href: "/contact", label: "Contact" },
+  ] as NavItem[],
   location: "Nkolbisson, Yaoundé — behind Institut Catholique",
   hours: [
     { day: "Monday – Friday", time: "7:30 – 17:00" },
@@ -57,34 +63,18 @@ const en = {
   home: {
     hero: {
       badge: "Admissions open · 2026–27",
-      title: "Two languages. One standard of excellence.",
+      title: "Two languages.\nOne standard of excellence.",
       intro:
         "A complete bilingual school in Yaoundé. Children join us at Day Care and leave ready for university, fluent in English and French.",
-      primary: "Primary section",
-      secondary: "Secondary section",
       facts: [
-        ["Age 1 to 18", "One campus, start to finish"],
+        ["Ages 1–18", "One campus"],
         ["EN + FR", "Two full sections"],
         ["3 pathways", "General, Technical, Commercial"],
       ],
       learners: "learners on campus",
       apply: "Apply for 2026–27",
-      scroll: "Scroll",
-      imgA: "Primary pupils in graduation gowns",
-      imgB: "Secondary students doing a chemistry practical",
-    },
-    day: {
-      eyebrow: "A day at B&A",
-      title: "A day at B&A, hour by hour.",
-      intro: "From morning assembly to the last game of the afternoon.",
-      moments: [
-        { time: "07:30", title: "Morning assembly", body: "Anthem, announcements and a word of encouragement to start the day together.", image: "m3.jpg" },
-        { time: "08:00", title: "Lessons begin", body: "Small classes in English or French, with daily practice in the other language.", image: "b8.jpg" },
-        { time: "10:30", title: "Hands-on science", body: "Secondary students move to the laboratories for practical work.", image: "b13.jpg" },
-        { time: "12:30", title: "Lunch & play", body: "Time to eat, rest and run around the courtyard with friends.", image: "m13.jpg" },
-        { time: "14:00", title: "Clubs & culture", body: "Music, dance, drama and art — every child finds a stage.", image: "m10.jpg" },
-        { time: "16:00", title: "Sport", body: "Football, athletics and house games before heading home.", image: "m11.jpg" },
-      ],
+      explore: "Discover the school",
+      imgA: "B&A teachers and staff in front of the school, beneath the words Discipline, Hardwork, Success",
     },
     admissions: {
       eyebrow: "Admissions 2026–27",
@@ -141,8 +131,8 @@ const en = {
           range: "Form 1 → Upper Sixth · 6ème → Terminale",
           body: "Three pathways — Technical, Commercial and General — preparing students for GCE, Baccalauréat and beyond.",
           points: ["Technical education", "Commercial studies", "General education", "Modern laboratories"],
-          image: img("b6.jpg"),
-          alt: "Secondary students studying together",
+          image: img("b4.jpg"),
+          alt: "Secondary student in uniform holding the Cameroonian flag at a school parade",
         },
       ],
     },
@@ -480,7 +470,7 @@ const en = {
     swipe: "Swipe to browse",
     tags: ["Campus", "Classrooms", "Events", "Sports", "Student life"],
     items: [
-      { src: img("h1.JPG"), title: "Staff & students", tag: "Campus" },
+      { src: img("h1.JPG"), title: "Our teaching team", tag: "Campus" },
       { src: img("m8.JPG"), title: "Little graduates", tag: "Events" },
       { src: img("b4.jpg"), title: "Flag & national pride", tag: "Student life" },
       { src: img("b9.jpg"), title: "Chemistry practical", tag: "Classrooms" },

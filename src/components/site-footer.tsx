@@ -3,6 +3,7 @@ import { Logo } from "@/components/logo";
 import { ButtonLink } from "@/components/button-link";
 import { LocaleLink } from "@/components/locale-link";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { flattenNav } from "@/i18n/nav";
 import { site, tel } from "@/lib/content";
 
 export function SiteFooter({ t }: { t: Dictionary }) {
@@ -31,7 +32,7 @@ export function SiteFooter({ t }: { t: Dictionary }) {
           <div>
             <h3 className="eyebrow font-sans text-gold-300">{f.explore}</h3>
             <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
-              {[{ href: "/", label: t.ui.home }, ...t.nav, { href: "/contact", label: t.contactLabel }].map((n) => (
+              {[{ href: "/", label: t.ui.home }, ...flattenNav(t.nav)].map((n) => (
                 <li key={n.href}>
                   <LocaleLink href={n.href} className="transition-colors hover:text-gold-300">
                     {n.label}

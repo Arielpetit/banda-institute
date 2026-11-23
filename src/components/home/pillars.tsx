@@ -14,7 +14,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
   const Icon = (k: string) => icons[k as keyof typeof icons] ?? Languages;
 
   return (
-    <section id="why" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="why" className="scroll-mt-24 pt-12 pb-24 sm:pt-16 sm:pb-32">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
@@ -30,7 +30,7 @@ export function Pillars({ t }: { t: Dictionary["home"]["pillars"] }) {
 
         <Stagger className="mt-14 grid auto-rows-[minmax(15rem,auto)] gap-4 md:grid-cols-6">
           <StaggerItem className="group relative overflow-hidden rounded-[2rem] md:col-span-4 md:row-span-2">
-            <Image src={img("m1.jpg")} alt="" fill quality={80} sizes="(min-width:768px) 66vw, 100vw" className="object-cover transition-transform duration-[1.6s] ease-out-expo group-hover:scale-105" />
+            <Image src={img("m19.jpg")} alt="" fill quality={80} sizes="(min-width:768px) 66vw, 100vw" className="object-cover object-[50%_30%] transition-transform duration-[1.6s] ease-out-expo group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
             <div className="relative flex h-full min-h-[26rem] flex-col justify-end p-7 text-cream sm:p-10">
               <Tile icon={Icon(bilingual.icon)} light />

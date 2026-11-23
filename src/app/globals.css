@@ -91,16 +91,6 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  --animate-scroll-up: scroll-up 45s linear infinite;
-  --animate-scroll-down: scroll-down 45s linear infinite;
-  @keyframes scroll-up {
-    from { transform: translateY(0); }
-    to { transform: translateY(-50%); }
-  }
-  @keyframes scroll-down {
-    from { transform: translateY(-50%); }
-    to { transform: translateY(0); }
-  }
 }
 
 @layer base {
@@ -164,10 +154,6 @@
   }
 }
 
-@utility mask-fade-y {
-  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
-}
-
 /* Lenis smooth scrolling */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -180,6 +166,3 @@ html.lenis, html.lenis body { height: auto; }
   mix-blend-mode: normal;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-scroll-up, .animate-scroll-down { animation: none; }
-}

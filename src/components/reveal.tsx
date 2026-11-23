@@ -75,7 +75,7 @@ export function StaggerItem({
   );
 }
 
-/** Splits a headline into words that rise from a mask. */
+/** Splits a headline into words that rise from a mask. A "\n" in the text forces a line break. */
 export function SplitHeading({
   text,
   className,
@@ -88,27 +88,31 @@ export function SplitHeading({
   as?: "h1" | "h2";
 }) {
   const Tag = motion[as];
-  const words = text.split(" ");
+  const lines = text.split("\n").map((l) => l.trim().split(" "));
   return (
     <Tag
       className={className}
       initial="hidden"
       animate="show"
       variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: delay } } }}
-      aria-label={text}
+      aria-label={text.replace(/\s*\n\s*/g, " ")}
     >
-      {words.map((w, i) => (
-        <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-          <motion.span
-            className="inline-block"
-            variants={{
-              hidden: { y: "110%" },
-              show: { y: "0%", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
-            }}
-          >
-            {w}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
+      {lines.map((words, li) => (
+        <span key={li} className={lines.length > 1 ? "block" : undefined}>
+          {words.map((w, i) => (
+            <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+              <motion.span
+                className="inline-block"
+                variants={{
+                  hidden: { y: "110%" },
+                  show: { y: "0%", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
+                {w}
+                {i < words.length - 1 ? "\u00a0" : ""}
+              </motion.span>
+            </span>
+          ))}
         </span>
       ))}
     </Tag>
