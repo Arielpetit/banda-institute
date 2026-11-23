@@ -39,7 +39,7 @@ import {
 } from "@/lib/application";
 import { site, tel } from "@/lib/content";
 import { cn } from "@/lib/cn";
-import { submitApplication } from "@/app/[lang]/admissions/apply/actions";
+import { submitApplication } from "@/app/(site)/[lang]/admissions/apply/actions";
 
 type T = Dictionary["admissions"]["form"];
 type Files = Partial<Record<DocumentKey, File | null>>;
