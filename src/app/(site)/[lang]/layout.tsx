@@ -11,6 +11,7 @@ import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { site } from "@/lib/content";
 import { fraunces, jakarta } from "@/lib/fonts";
+import { pageMetadata, siteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -21,10 +22,9 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   if (!hasLocale(lang)) return {};
   const t = await getDictionary(lang);
   return {
+    metadataBase: new URL(siteUrl),
+    ...pageMetadata({ lang, description: t.meta.description, homeTitle: t.meta.title }),
     title: { default: t.meta.title, template: `%s · ${site.name}` },
-    description: t.meta.description,
-    openGraph: { siteName: site.fullName, locale: t.meta.locale, type: "website" },
-    alternates: { languages: { en: "/en", fr: "/fr" } },
   };
 }
 

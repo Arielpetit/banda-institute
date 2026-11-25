@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { ApplicationForm } from "@/components/admissions/application-form";
 import { SplitHeading } from "@/components/reveal";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/admissions/apply">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.admissions.form.metaTitle, robots: { index: false } };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/admissions/apply", title: t.admissions.form.metaTitle, description: t.admissions.metaDescription, index: false });
 }
 
 export default async function ApplyPage({ params }: PageProps<"/[lang]/admissions/apply">) {

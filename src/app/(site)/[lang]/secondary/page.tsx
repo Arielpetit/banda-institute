@@ -7,11 +7,12 @@ import { PathwayTabs } from "@/components/pathway-tabs";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { ButtonLink } from "@/components/button-link";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/secondary">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.secondary.metaTitle, description: t.secondary.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/secondary", title: t.secondary.metaTitle, description: t.secondary.metaDescription });
 }
 
 export default async function SecondaryPage({ params }: PageProps<"/[lang]/secondary">) {

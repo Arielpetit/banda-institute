@@ -4,11 +4,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { EventsList } from "@/components/events-list";
 import { Stagger, StaggerItem } from "@/components/reveal";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/events">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.events.metaTitle, description: t.events.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/events", title: t.events.metaTitle, description: t.events.metaDescription });
 }
 
 export default async function EventsPage({ params }: PageProps<"/[lang]/events">) {

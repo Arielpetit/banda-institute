@@ -38,3 +38,7 @@ Still to add before launch: email or WhatsApp notification to the admissions off
 - Have a native French speaker proofread `fr.ts`.
 - Confirm: event dates (2026–27 sample calendar), phone numbers, WhatsApp number, email addresses (`ba-institute.edu`), founding year.
 - The contact form opens the visitor's email app or WhatsApp with the message prefilled. It does not store messages on a server.
+
+### Link previews (Open Graph)
+
+Every page has its own title, description, canonical link, language alternates and Open Graph / Twitter tags (`src/lib/seo.ts`). The share image is `public/og/en.jpg` or `public/og/fr.jpg` (1200×630), chosen by language. Set `NEXT_PUBLIC_SITE_URL` (for example `https://www.bandainstitute.com`) on the host: share links and images are built from it. Social networks cache previews, so re-scrape after changing an image.

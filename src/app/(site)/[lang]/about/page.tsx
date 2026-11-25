@@ -7,11 +7,12 @@ import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { Proprietor } from "@/components/home/proprietor";
 import { Stats } from "@/components/home/stats";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/about">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.about.metaTitle, description: t.about.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/about", title: t.about.metaTitle, description: t.about.metaDescription });
 }
 
 export default async function AboutPage({ params }: PageProps<"/[lang]/about">) {

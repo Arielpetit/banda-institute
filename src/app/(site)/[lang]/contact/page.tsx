@@ -6,11 +6,12 @@ import { ContactForm } from "@/components/contact-form";
 import { Faq } from "@/components/faq";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img, site, tel } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/contact">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.contact.metaTitle, description: t.contact.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/contact", title: t.contact.metaTitle, description: t.contact.metaDescription });
 }
 
 export default async function ContactPage({ params }: PageProps<"/[lang]/contact">) {

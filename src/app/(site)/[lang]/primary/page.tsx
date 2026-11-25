@@ -6,11 +6,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { ButtonLink } from "@/components/button-link";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/primary">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.primary.metaTitle, description: t.primary.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/primary", title: t.primary.metaTitle, description: t.primary.metaDescription });
 }
 
 const clubs = [

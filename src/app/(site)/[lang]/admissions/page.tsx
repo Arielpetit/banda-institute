@@ -7,11 +7,12 @@ import { ButtonLink } from "@/components/button-link";
 import { Faq } from "@/components/faq";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img, stockUrl } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/admissions">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.admissions.metaTitle, description: t.admissions.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/admissions", title: t.admissions.metaTitle, description: t.admissions.metaDescription });
 }
 
 export default async function AdmissionsPage({ params }: PageProps<"/[lang]/admissions">) {

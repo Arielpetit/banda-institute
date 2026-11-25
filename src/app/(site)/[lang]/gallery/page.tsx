@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { GalleryGrid } from "@/components/gallery-grid";
 import { loadLocale } from "@/i18n/load";
+import { pageMetadata } from "@/lib/seo";
 import { img } from "@/lib/content";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/gallery">): Promise<Metadata> {
-  const { t } = await loadLocale(params);
-  return { title: t.gallery.metaTitle, description: t.gallery.metaDescription };
+  const { lang, t } = await loadLocale(params);
+  return pageMetadata({ lang, path: "/gallery", title: t.gallery.metaTitle, description: t.gallery.metaDescription });
 }
 
 export default async function GalleryPage({ params }: PageProps<"/[lang]/gallery">) {
