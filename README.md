@@ -41,4 +41,4 @@ Still to add before launch: email or WhatsApp notification to the admissions off
 
 ### Link previews (Open Graph)
 
-Every page has its own title, description, canonical link, language alternates and Open Graph / Twitter tags (`src/lib/seo.ts`). The share image is `public/og/en.jpg` or `public/og/fr.jpg` (1200×630), chosen by language. Set `NEXT_PUBLIC_SITE_URL` (for example `https://www.bandainstitute.com`) on the host: share links and images are built from it. Social networks cache previews, so re-scrape after changing an image.
+Every page has its own title, description, canonical link, language alternates and Open Graph / Twitter tags (`src/lib/seo.ts`). The share image is `public/og/en.jpg` or `public/og/fr.jpg` (1200×630), chosen by language. The address defaults to `https://banda-institute.vercel.app`. When a custom domain goes live, set `NEXT_PUBLIC_SITE_URL` (for example `https://www.bandainstitute.com`) on the host: share links and images are built from it. Social networks cache previews, so re-scrape after changing an image.

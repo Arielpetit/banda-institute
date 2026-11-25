@@ -8,7 +8,7 @@ import { site } from "@/lib/content";
  */
 export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://www.bandainstitute.com")
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://banda-institute.vercel.app")
 ).replace(/\/$/, "");
 
 const ogLocale: Record<Locale, string> = { en: "en_CM", fr: "fr_CM" };
